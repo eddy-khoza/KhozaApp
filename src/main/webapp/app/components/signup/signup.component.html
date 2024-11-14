@@ -1,0 +1,101 @@
+<div class="register-page d-flex justify-content-center align-items-center vh-100">
+    <div class="card register-card p-4" style="width: 400px;">
+        <h2 class="register-heading text-center mb-4">Sign Up</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group mb-3">
+                <label for="username">username</label>
+                <input
+                    type="text"
+                    id="username"
+                    class="form-control"
+                    formControlName="username"
+                    placeholder="Enter your username"
+                />
+                <div class="text-danger" *ngIf="username?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="username?.hasError('minlength')">
+                    Name must be at least 3 characters
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    formControlName="email"
+                    placeholder="Enter your email"
+                />
+                <div class="text-danger" *ngIf="email?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="email?.hasError('email')">
+                    Enter a valid email
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="firstName">First Name</label>
+                <input
+                    type="text"
+                    id="firstName"
+                    class="form-control"
+                    formControlName="firstName"
+                    placeholder="Enter your firstName"
+                />
+                <div class="text-danger" *ngIf="firstName?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="firstName?.hasError('pattern')">
+                    Name must be at least 3 characters
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="surname">surname</label>
+                <input
+                    type="text"
+                    id="surname"
+                    class="form-control"
+                    formControlName="surname"
+                    placeholder="Enter your surname"
+                />
+                <div class="text-danger" *ngIf="surname?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="surname?.hasError('pattern')">
+                    Name must be at least 3 characters
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Enter your password"
+                />
+                <div class="text-danger" *ngIf="password?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="password?.hasError('minlength')">
+                    Password must be at least 6 characters
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary w-100 register-button"
+                [disabled]="registerForm.invalid"
+                (click)="onSubmit()"
+            >
+                Register
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="login-page d-flex justify-content-center align-items-center vh-100">
+    <div class="card login-card p-4" style="width: 400px;">
+        <h2 class="login-heading text-center mb-4">Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <!-- Email Field -->
+            <div class="form-group mb-3">
+                <label for="username">Username</label>
+                <input
+                    type="username"
+                    id="username"
+                    class="form-control"
+                    formControlName="username"
+                    placeholder="Enter your username"
+                />
+                <div class="text-danger" *ngIf="username?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="username?.hasError('username')">
+                    Enter a valid username
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Enter your password"
+                />
+                <div class="text-danger" *ngIf="password?.hasError('required')">
+
+                </div>
+                <div class="text-danger" *ngIf="password?.hasError('minlength')">
+                    Password must be at least 6 characters
+                </div>
+            </div>
+
+            <!-- Login Button -->
+            <button
+                type="submit"
+                class="btn btn-primary w-100 login-button"
+                [disabled]="loginForm.invalid"
+            >
+                Login
+            </button>
+        </form>
+
+        <p class="signup-text mt-3 text-center">
+            Don't have an account?
+             <a [routerLink]="'/signup'" class="signup-link">Sign Up</a>
+        </p>
+    </div>
+</div>
